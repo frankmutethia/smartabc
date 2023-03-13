@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:smart_abc/smart_a.dart';
+// import 'package:smart_abc/screen_a.dart';
+// import 'package:lottie/lottie.dart';
 
 void main() {
   runApp(
@@ -14,60 +17,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Smart_abc',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
+        // visualDensity: VisualDensity.adaptivePlatformDensity,
+        // primaryColor: Color(0xff145C9E),
+        // scaffoldBackgroundColor: Color(0xff1F1F1F),
+        // accentColor: Color(0xff007EF4),
+        // fontFamily: "OverpassRegular",
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Scaffold(
-        body: Center(child: TexttoSpeech()),
-      ),
-    );
-  }
-}
-
-class TexttoSpeech extends StatelessWidget {
-  // const TexttoSpeech({super.key});
-  // String femalevoice = "cmn-CN-Standard-A";
-  // String malevoice = "cmn-CN-Standard-B";
-  final FlutterTts flutterTts = FlutterTts();
-  final TextEditingController textEditingController = TextEditingController();
-  // _flutterTts.setVoice("en-us-x-sfg#male_1-local");
-
-  speak(String text) async {
-    await flutterTts.setLanguage("en-US");
-    await flutterTts.setPitch(0.8);
-    await flutterTts.speak(text);
-    await flutterTts.setVoice({"name": "Karen", "locale": "en-AU"});
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            TextFormField(
-              controller: textEditingController,
-            ),
-            ElevatedButton(
-              child: Text(" Start Text to Speech"),
-              onPressed: () => speak(textEditingController.text),
-            ),
-          ],
-        ),
-      ),
+      home: Smart_a(),
+      routes: {
+        Smart_a.id: (context) => Smart_a(),
+      },
     );
   }
 }
